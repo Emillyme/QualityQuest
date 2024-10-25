@@ -37,6 +37,10 @@ function proximaQuestao(opcaoSelecionada) {
             pontosAzul++;
         }
     }
+    // Fazer a logica deposi de que se o time q começou errar, 
+    // vai mostrar o resultado e vai para proxima pergunta e o 
+    // outro tem chance de tentar. Porém, se os dois errarem mostra
+    // o resultado e vai pra proxima pergunta.
     console.log(`Vermelho: ${pontosVermelho} --- Azul: ${pontosAzul}`);
 
 }
