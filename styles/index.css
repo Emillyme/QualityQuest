@@ -1,0 +1,42 @@
+@import url(./styles.css);
+
+h1 {
+    font-size: 2rem;
+    text-align: center;
+    padding-top: 2rem;
+    font-weight: 600;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    gap: 2rem;
+}
+
+.team-choice {
+    width: 400px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.team-choice:hover {
+    transform: scale(1.1);  
+}
+
+.blue {
+    background-color: #3b82f6;  
+}
+
+.red {
+    background-color: #ef4444;
+}
