@@ -1,0 +1,80 @@
+@import url('./styles.css');
+
+body {
+    background-color: #f3f4f6;
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* container principal do quiz */
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    max-width: 700px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    color: #1d4ed8;
+}
+
+/* qestão */
+.questao {
+    font-size: 1.5rem;
+    color: #374151;
+    margin-bottom: 25px;
+    background-color: #e0e7ff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.opcoes {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.opcoes div {
+    background-color: #f9fafb;
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.opcoes div:hover {
+    background-color: #e5e7eb;
+    border-color: #93c5fd;
+}
+
+.opcoes div.selecionado {
+    background-color: #3b82f6;
+    color: white;
+    border-color: #1d4ed8;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .questao {
+        font-size: 1.3rem;
+    }
+}
