@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.border-fundo {
+    border-radius: 100%;
+    height: 72%;
+    width: 116%;
+    bottom: 32rem;
+    right: -9rem;
+}
+
+.resto-button {
+    border-radius: 50%;
+    filter: blur(1px)
+}
+
+.border-50{
+    border-radius: 50%;
+}
+
+.tamanho-botao {
+    transform: scale(0.6);
+    margin-left: 5px;
+}
+.sombra-perguntas {
+    -webkit-box-shadow: 0px 4px 23px 0px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0px 4px 23px 0px rgba(0,0,0,0.1);
+    box-shadow: 0px 4px 23px 0px rgba(0,0,0,0.1);
+}
+
+.tamanho-botao {
+    width: 80%;
+}
