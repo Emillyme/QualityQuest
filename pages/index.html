@@ -12,16 +12,37 @@
     </nav>
 
     <!-- Conteudo principal para após escolha de times na vida real, eles tirarem no impar ou par quem vai começar. (ou algo do tipo) -->
-    <section class="conteudo-principal">
-        <h1>Escolha quem vai começar!</h1>
+    <main class="conteudo-principal">
+
+        <div class="fundo"></div>
+        
         <div class="container">
+            
+            <h1>Definam os times</h1>
+
             <div class="imagem-questao"> 
-                <!-- Aqui vai ficar a imagem da questão, provavelmente se der tempo quero colcoar desenhos-->
+                <!-- Aqui vai ficar a imagem da questão, provavelmente se der tempo quero colcoar desenhos ???? nao entendi emiii-->
             </div>
-            <div class="team-choice blue" onclick="handleTeamChoice('blue')">Time Azul</div>
-            <div class="team-choice red" onclick="handleTeamChoice('red')">Time Vermelho</div>
+
+            <div class="container-times">
+                <div class="team-choice red " onclick="handleTeamChoice('red')"></div>
+                <div class="team-choice blue" onclick="handleTeamChoice('blue')"></div>
+            </div>
+            
+            <div class="play-container">
+                <div class="blurred-background"></div>
+                <button>
+                    <div>
+                        <img src="../imgs/triamgulo.svg" alt="">
+                    </div>
+                </button>
+            </div>
+
+            <div class="qualidade-container">
+                <p>Semana da Qualidade</p>
+            </div>
         </div>
-    </section>
+    </main>
 
     <script src="../scripts/scriptIndex.js"></script>
 </body>
