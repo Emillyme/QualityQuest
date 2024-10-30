@@ -1,8 +1,7 @@
 export const data = [
   {
     questao: "Qual é o principal objetivo de ter zero defeitos nos produtos?",
-    imagem:
-      "https://www.google.com/url?sa=i&url=https%3A%2F%2Femtodolugar.facha.edu.br%2F2023%2F04%2F20%2Fdia-do-pinguim-filmes-com-as-aves-marinhas-para-assistir%2F&psig=AOvVaw1n4wpWKJM7F9hMUN_USWr4&ust=1729904971594000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMjdl6usqIkDFQAAAAAdAAAAABAQ",
+    imagem: "imgs\\questao1_transparente.svg",
     opcoes: [
       "A) Reduzir custos",
       "B) Aumentar a produção",
@@ -13,8 +12,7 @@ export const data = [
   },
   {
     questao: "O que significa o princípio de 'Satisfação do Cliente'?",
-    imagem:
-      "https://www.google.com/url?sa=i&url=https%3A%2F%2Femtodolugar.facha.edu.br%2F2023%2F04%2F20%2Fdia-do-pinguim-filmes-com-as-aves-marinhas-para-assistir%2F&psig=AOvVaw1n4wpWKJM7F9hMUN_USWr4&ust=1729904971594000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMjdl6usqIkDFQAAAAAdAAAAABAQ",
+    imagem: "imgs\\questao2.svg",
     opcoes: [
       "A) Fazer os produtos mais rápidos",
       "B) Atender e exceder as expectativas do cliente",
@@ -25,8 +23,7 @@ export const data = [
   },
   {
     questao: "Como as reclamações dos clientes são tratadas na empresa?",
-    imagem:
-      "https://www.google.com/url?sa=i&url=https%3A%2F%2Femtodolugar.facha.edu.br%2F2023%2F04%2F20%2Fdia-do-pinguim-filmes-com-as-aves-marinhas-para-assistir%2F&psig=AOvVaw1n4wpWKJM7F9hMUN_USWr4&ust=1729904971594000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMjdl6usqIkDFQAAAAAdAAAAABAQ",
+    imagem: "imgs\\questao3.svg",
     opcoes: [
       "A) São ignoradas",
       "B) São passadas para outra equipe",
@@ -37,7 +34,7 @@ export const data = [
   },
   {
     questao: "O que é o 'Stop Sign' e por que ele é usado?",
-    imagem: "",
+    imagem: "imgs\\questao4_transparente.svg",
     opcoes: [
       "A) Para indicar um problema de qualidade e interromper a produção",
       "B) Para chamar um supervisor",
@@ -48,7 +45,7 @@ export const data = [
   },
   {
     questao: "Quem decide encerrar um 'Stop Sign'?",
-    imagem: "",
+    imagem: "imgs\\questao5.svg",
     opcoes: [
       "A) Operador da linha",
       "B) Gestores de manufatura e logística",
@@ -60,7 +57,7 @@ export const data = [
   {
     questao:
       "O que um colaborador deve fazer ao notar um problema de qualidade?",
-    imagem: "",
+    imagem: "imgs\\questao6.svg",
     opcoes: [
       "A) Ignorar o problema",
       "B) Notificar e parar o processo, se necessário",
@@ -71,7 +68,7 @@ export const data = [
   },
   {
     questao: "O que significa 'Reação Rápida' em casos de problemas?",
-    imagem: "",
+    imagem: "imgs\\questao7.svg",
     opcoes: [
       "A) Reagir ao final do turno",
       "B) Aguardar por uma solução",
@@ -82,7 +79,7 @@ export const data = [
   },
   {
     questao: "Como o operador pode parar o processo se vir algo errado?",
-    imagem: "",
+    imagem: "imgs\\questao8.svg",
     opcoes: [
       "A) Chamando o gerente",
       "B) Continuando o processo",
@@ -93,7 +90,7 @@ export const data = [
   },
   {
     questao: "Por que a organização e limpeza (5S) são importantes?",
-    imagem: "",
+    imagem: "imgs\\questao9.svg",
     opcoes: [
       "A) Reduzem o tempo de limpeza",
       "B) Melhoram a organização e segurança",
@@ -104,7 +101,7 @@ export const data = [
   },
   {
     questao: "Por que é importante ter instruções claras no local de trabalho?",
-    imagem: "",
+    imagem: "imgs\\questao10.svg",
     opcoes: [
       "A) Para os colaboradores não errarem",
       "B) Para evitar retrabalho",
@@ -115,7 +112,7 @@ export const data = [
   },
   {
     questao: "O que é uma FMEA e para que ela serve?",
-    imagem: "",
+    imagem: "imgs\\questao11.svg",
     opcoes: [
       "A) Para melhorar o visual dos produtos",
       "B) Para ajudar a evitar possíveis falhas",
@@ -126,7 +123,7 @@ export const data = [
   },
   {
     questao: "Como os processos são controlados para manter a qualidade?",
-    imagem: "",
+    imagem: "imgs\\questao12.svg",
     opcoes: [
       "A) Através de verificações e padrões de controle",
       "B) Aumentando a quantidade de produtos",
@@ -137,7 +134,7 @@ export const data = [
   },
   {
     questao: "Por que monitorar os equipamentos de medição?",
-    imagem: "",
+    imagem: "imgs\\questao13.svg",
     opcoes: [
       "A) Para aumentar a produção",
       "B) Para garantir precisão nas medições",
@@ -148,7 +145,7 @@ export const data = [
   },
   {
     questao: "O que deve ser verificado nos equipamentos de medição?",
-    imagem: "",
+    imagem: "imgs\\questao14.svg",
     opcoes: [
       "A) Se estão devidamente calibrados",
       "B) Se são modernos",
@@ -159,7 +156,7 @@ export const data = [
   },
   {
     questao: "Como garantir que os equipamentos estejam funcionando bem?",
-    imagem: "",
+    imagem: "imgs\\questao15.svg",
     opcoes: [
       "A) Verificando regularmente a calibração",
       "B) Mudando de equipamentos frequentemente",
@@ -170,7 +167,7 @@ export const data = [
   },
   {
     questao: "O que o princípio 'Check the Checker' quer dizer?",
-    imagem: "",
+    imagem: "imgs\\questao16.svg",
     opcoes: [
       "A) Garantir a qualidade dos equipamentos de inspeção",
       "B) Verificar o operador",
@@ -181,7 +178,7 @@ export const data = [
   },
   {
     questao: "Por que se usam câmeras e sensores para controle de qualidade?",
-    imagem: "",
+    imagem: "imgs\\questao17.svg",
     opcoes: [
       "A) Para reduzir o tempo de produção",
       "B) Para detectar falhas e melhorar a precisão",
@@ -192,7 +189,7 @@ export const data = [
   },
   {
     questao: "O que é o sistema 'Poka Yoke'?",
-    imagem: "",
+    imagem: "imgs\\questao18.svg",
     opcoes: [
       "A) Um método para prevenir falhas humanas",
       "B) Um sistema de aumento de produção",
@@ -203,7 +200,7 @@ export const data = [
   },
   {
     questao: "Qual é a importância de manter as máquinas em bom estado?",
-    imagem: "",
+    imagem: "imgs\\questao19.svg",
     opcoes: [
       "A) Garantir a continuidade e a qualidade da produção",
       "B) Aumentar o número de peças produzidas",
@@ -214,7 +211,7 @@ export const data = [
   },
   {
     questao: "O que é a TPM (Manutenção Produtiva Total)?",
-    imagem: "",
+    imagem: "imgs\\questao20.svg",
     opcoes: [
       "A) Método para evitar paradas e falhas nas máquinas",
       "B) Processo de aumentar a produção",
@@ -225,7 +222,7 @@ export const data = [
   },
   {
     questao: "O que fazer com uma máquina danificada?",
-    imagem: "",
+    imagem: "imgs\\questao21.svg",
     opcoes: [
       "A) Parar e reparar imediatamente",
       "B) Continuar usando até a próxima pausa",
@@ -236,7 +233,7 @@ export const data = [
   },
   {
     questao: "Como saber quando trocar uma ferramenta usada?",
-    imagem: "",
+    imagem: "imgs\\questao22.svg",
     opcoes: [
       "A) Como saber quando trocar uma ferramenta usada?",
       "B) Ao final do turno",
@@ -248,7 +245,7 @@ export const data = [
 
   {
     questao: "Por que é importante marcar a vida útil das ferramentas?",
-    imagem: "",
+    imagem: "imgs\\questao23.svg",
     opcoes: [
       "A) Para prevenir falhas na produção",
       "B) Para reduzir o consumo de energia",
@@ -259,7 +256,7 @@ export const data = [
   },
   {
     questao: "Como os produtos são identificados na fábrica?",
-    imagem: "",
+    imagem: "imgs\\questao24.svg",
     opcoes: [
       "A) Por etiquetas com códigos e status",
       "B) Por ordem de chegada",
@@ -270,7 +267,7 @@ export const data = [
   },
   {
     questao: "O que é o 'refugo' e como ele é descartado?",
-    imagem: "",
+    imagem: "imgs\\questao25.svg",
     opcoes: [
       "A) Produtos sem uso, descartados de forma segura",
       "B) Produtos em bom estado, mas fora do padrão",
@@ -281,7 +278,7 @@ export const data = [
   },
   {
     questao: "O que fazer com um produto que caiu no chão?",
-    imagem: "",
+    imagem: "imgs\\questao26.svg",
     opcoes: [
       "A) Recolher e mandar para o retrabalho",
       "B) Colocar de volta na linha de produção",
@@ -294,7 +291,7 @@ export const data = [
   // Depois que eu fizer todas as imagens, eu vou colocar o caminho delas
   {
     questao: "Por que reportar reincidências de produtos caídos?",
-    imagem: "",
+    imagem: "imgs\\questao27.svg",
     opcoes: [
       "A) Para identificar e corrigir causas de falhas",
       "B) Para aumentar a velocidade do processo",
@@ -305,7 +302,7 @@ export const data = [
   },
   {
     questao: "O que é o método 'First In, First Out' (FIFO)?",
-    imagem: "",
+    imagem: "imgs\\questao28.svg",
     opcoes: [
       "A) A ordem de produtos mais novos para mais velhos",
       "B) A ordem de saída é a mesma da entrada",
@@ -316,7 +313,7 @@ export const data = [
   },
   {
     questao: "O que deve ser feito ao reiniciar uma máquina após pausa?",
-    imagem: "",
+    imagem: "imgs\\questao29.svg",
     opcoes: [
       "A) Iniciar imediatamente o processo",
       "B) Verificar e seguir o padrão definido de reinício",
@@ -327,7 +324,7 @@ export const data = [
   },
   {
     questao: "Como lidar com um produto que precisa de retrabalho?",
-    imagem: "",
+    imagem: "imgs\\questao30.svg",
     opcoes: [
       "A) Seguir o procedimento de retrabalho e usar equipamentos aprovados",
       "B) Enviar diretamente para o cliente",
@@ -338,7 +335,7 @@ export const data = [
   },
   {
     questao: "Como garantir que só a peça correta seja usada na montagem?",
-    imagem: "",
+    imagem: "imgs\\questao31.svg",
     opcoes: [
       "A) Deixar todas as peças acessíveis ao operador",
       "B) Separar e identificar claramente a peça correta",
@@ -349,7 +346,7 @@ export const data = [
   },
   {
     questao: "Como evitar que componentes errados sejam usados juntos?",
-    imagem: "",
+    imagem: "imgs\\questao32.svg",
     opcoes: [
       "A) Usar containers fechados para as peças",
       "B) Deixar todas as peças misturadas para acesso rápido",
@@ -360,7 +357,7 @@ export const data = [
   },
   {
     questao: "O que fazer com sobras de material após a produção?",
-    imagem: "",
+    imagem: "imgs\\questao33.svg",
     opcoes: [
       "A) Dispensar imediatamente",
       "B) Guardar e identificar claramente as sobras",
@@ -371,7 +368,7 @@ export const data = [
   },
   {
     questao: "Como identificar um produto que está sem etiqueta?",
-    imagem: "",
+    imagem: "imgs\\questao34.svg",
     opcoes: [
       "A) Deixar no fluxo de produção para análise posterior",
       "B) Identificar manualmente como retrabalho ou refugo",
@@ -382,7 +379,7 @@ export const data = [
   },
   {
     questao: "Como descartar materiais rejeitados?",
-    imagem: "",
+    imagem: "imgs\\questao35.svg",
     opcoes: [
       "A) Armazenar para uma possível reutilização",
       "B) Descartar conforme procedimento e impedir reutilização",
@@ -393,7 +390,7 @@ export const data = [
   },
   {
     questao: "Como a temperatura afeta o processo de fabricação?",
-    imagem: "",
+    imagem: "imgs\\questao36.svg",
     opcoes: [
       "A) Aumenta a velocidade do processo",
       "B) Afeta a qualidade do produto final",
@@ -404,7 +401,7 @@ export const data = [
   },
   {
     questao: "Por que participar das instruções de segurança é importante?",
-    imagem: "",
+    imagem: "imgs\\questao37.svg",
     opcoes: [
       "A) Para cumprir exigências de auditoria",
       "B) Para garantir a segurança e qualidade no trabalho",
@@ -415,7 +412,7 @@ export const data = [
   },
   {
     questao: "Como a organização afeta a qualidade e eficiência?",
-    imagem: "",
+    imagem: "imgs\\questao38.svg",
     opcoes: [
       "A) Facilita a localização de problemas e previne erros",
       "B) Reduz o número de funcionários",
@@ -426,7 +423,7 @@ export const data = [
   },
   {
     questao: "Como a qualidade impacta o cliente final?",
-    imagem: "",
+    imagem: "imgs\\questao39.svg",
     opcoes: [
       "A) Aumenta o custo para o cliente",
       "B) Melhora a satisfação e confiança do cliente",
@@ -436,8 +433,8 @@ export const data = [
     resposta: 1,
   },
   {
-    questao: "Qual Q corresponde a imagem?",
-    imagem: "",
+    questao: "Qual Q corresponde à imagem?",
+    imagem: "imgs\\questao40.jpeg",
     opcoes: [
       "A) 3Q",
       "B) Isso não se encaixa nos 14Q",
