@@ -6,7 +6,10 @@ export default {
     extend: {
       colors: {
         "logo" : "#393939",
-        "opcao": "#0D131C"
+        "opcao": "#0D131C",
+        "correct" :"#A5FF9D",
+        "wrong" : "#FFA0A0",
+        "cronometro-fundo": "#FBFBFB"
       }
 
     },
