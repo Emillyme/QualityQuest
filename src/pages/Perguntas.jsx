@@ -1,13 +1,31 @@
 import { TitlePegunta } from "../components/TitlePergunta";
 import { PerguntaButton } from "../components/PerguntaButton";
 import { useEffect, useState } from "react";
+import { data } from "../components/quizData";
+
+function sortearQuestao(){
+    return Math.floor(Math.random() * data.length);
+}
 
 export function Perguntas (){
 
-    const [data, setData] = useState("")
+    let index = sortearQuestao();
+    const [dataG, setDataG] = useState(data[index])
     const [progresso, setProgresso] = useState(0)
     const maxProgresso = 100
     const incremento = 2
+
+    data.splice(index, 1);
+
+    const passarQuestao = () => {
+        index = sortearQuestao();
+
+        setDataG(data[index])
+        data.splice(index, 1);
+        setProgresso(0);
+    }
+
+    
 
     useEffect(()=> {
         // fetch('../data/data.json')
@@ -63,19 +81,19 @@ export function Perguntas (){
                 <main className="mx-28">
 
                     {/* barra do cronometro  */}
-                    <div className="bg-cronometro-fundo w-full h-7 mt-8 rounded-full">
-                        <div className="w-full mx-10 h-4 bg-correct  transition-all duration-500" style={{width: `${progresso}%`}}></div>
+                    <div className="bg-cronometro-fundo w-full h-7 mt-8 rounded-full overflow-hidden">
+                        <div className="w-full mx-0 h-full bg-correct  transition-all duration-500" style={{width: `${progresso}%`}}></div>
                     </div>
 
                     <div className="">
-                        <TitlePegunta texto={'alguma pergunta alguma pergunta'}/> 
+                        <TitlePegunta texto={dataG.questao}/> 
                     </div>
 
                     <div className=" mx-40 flex flex-col gap-10 mt-44 justify-center ">
-                        <PerguntaButton opcao={"A"}/>
-                        <PerguntaButton opcao={"B"}/>
-                        <PerguntaButton opcao={"C"}/>
-                        <PerguntaButton opcao={"D"}/>
+                        <PerguntaButton opcao={dataG.opcoes[0]} funcao={passarQuestao} index={0} indexCorreto={1}/>
+                        <PerguntaButton opcao={dataG.opcoes[1]}/>
+                        <PerguntaButton opcao={dataG.opcoes[2]}/>
+                        <PerguntaButton opcao={dataG.opcoes[3]}/>
                     </div>
                 </main>
 
