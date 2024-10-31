@@ -1,45 +1,52 @@
 import { TitlePegunta } from "../components/TitlePergunta";
 import { PerguntaButton } from "../components/PerguntaButton";
 import { useEffect, useState } from "react";
-import { data } from "../components/quizData";
+import data from "../data/data.json";
 
-function sortearQuestao(){
-    return Math.floor(Math.random() * data.length);
-}
+
+
+
 
 export function Perguntas (){
+    
+    const [timeAtual, setTimeAtual] = useState(Math.random() < 0.5 ? 'red' : 'blue');
+    const [perguntas, setPerguntas] = useState(data.perguntas);
+    const [index, setIndex] = useState(sortearQuestao);
+    const [dataG, setDataG] = useState(perguntas[index]);
+    const [progresso, setProgresso] = useState(0);
+    const maxProgresso = 100;
+    const incremento = 2;
 
-    let index = sortearQuestao();
-    const [dataG, setDataG] = useState(data[index])
-    const [progresso, setProgresso] = useState(0)
-    const maxProgresso = 100
-    const incremento = 2
-
-    data.splice(index, 1);
+    function sortearQuestao(){
+        return Math.floor(Math.random() * perguntas.length);
+    }
 
     const passarQuestao = () => {
-        index = sortearQuestao();
+        let novoIndex = sortearQuestao();
 
-        setDataG(data[index])
-        data.splice(index, 1);
+        setIndex(novoIndex);
+
+        setDataG(perguntas[novoIndex])
         setProgresso(0);
+
+        setPerguntas((prevPerguntas) => {
+            const novasPerguntas = [...prevPerguntas]
+            novasPerguntas.splice(index, 1);
+            return novasPerguntas;
+        })
+        console.log(perguntas.length)
+    }
+
+    const corrijir = (indexOpcao) => {
+
+        if(indexOpcao == perguntas.resposta){
+            
+        }
     }
 
     
 
     useEffect(()=> {
-        // fetch('../data/data.json')
-        // .then(response =>{
-        //     if (!response.ok) {
-        //         throw new Error(`HTTP error! status: ${response.status}`);
-        //     }
-        //     console.log(response.json())
-        //     return response.json();
-        // })
-        // .then ((dataJson)=> {
-        //     console.log(dataJson)
-        //     setData(dataJson)
-        // })
         const intervalo = setInterval(() => {
             setProgresso((prev) => {
                 // Se o progresso é menor que o máximo
@@ -47,6 +54,7 @@ export function Perguntas (){
                     // Aumenta o progresso de forma segura
                     return Math.min(prev + incremento, maxProgresso);
                 }
+
                 return prev; // Caso contrário, mantém o valor atual
             });
             // requestAnimationFrame(animateProgress); // Continua a animação
@@ -58,20 +66,6 @@ export function Perguntas (){
 
         // Limpa a animação ao desmontar o componente
     }, []); // O array vazio garante que isso rode apenas uma vez
-
-
-
-    // useEffect(()=>{
-    //     const intervalo = setInterval(()=>{
-    //         setProgresso(prevProgresso=>{
-    //             if(prevProgresso < 100){
-    //                 clearInterval(intervalo)
-    //                 return prevProgresso
-    //             }
-    //         })
-    //     }, 1000)
-    //     return ()=> clearInterval(intervalo)
-    // }, [])
 
 
     return(
@@ -86,11 +80,12 @@ export function Perguntas (){
                     </div>
 
                     <div className="">
+
                         <TitlePegunta texto={dataG.questao}/> 
                     </div>
 
                     <div className=" mx-40 flex flex-col gap-10 mt-44 justify-center ">
-                        <PerguntaButton opcao={dataG.opcoes[0]} funcao={passarQuestao} index={0} indexCorreto={1}/>
+                        <PerguntaButton opcao={dataG.opcoes[0]} funcao={passarQuestao} correct={""}/>
                         <PerguntaButton opcao={dataG.opcoes[1]}/>
                         <PerguntaButton opcao={dataG.opcoes[2]}/>
                         <PerguntaButton opcao={dataG.opcoes[3]}/>

@@ -1,8 +1,8 @@
 import { useState } from "react"
 
-export function PerguntaButton({opcao, funcao, index, indexCorreto}){
+export function PerguntaButton({opcao, funcao, correct}){
 
-    const [correct, setCorrect] = useState("")
+
 
     // const corrijir = () => {
     //     if(index === indexCorreto){
@@ -20,7 +20,7 @@ export function PerguntaButton({opcao, funcao, index, indexCorreto}){
     // }
 
     return(
-        <button className={`${correct ? "bg-correct" : "bg-wrong"} text-opcao font-semibold text-2xl
-        bg-white sombra-perguntas py-4 `} onClick={funcao}>{opcao}</button>
+        <button className={`${correct === '' ? "bg-white": correct ? "bg-correct" : "bg-wrong"} text-opcao font-semibold text-2xl
+        sombra-perguntas py-4 `} onClick={funcao}>{opcao}</button>
     )
 }
