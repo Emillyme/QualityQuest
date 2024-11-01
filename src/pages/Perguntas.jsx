@@ -32,8 +32,8 @@ export function Perguntas (){
         });
     }
 
-    const passarQuestao = (index) => {
-        if (index !== dataG.resposta && !passouVez){
+    const passarQuestao = (indexResposta) => {
+        if (indexResposta !== dataG.resposta && !passouVez){
             setPassouVez(true);
             
         }
@@ -52,11 +52,14 @@ export function Perguntas (){
             });
             setPassouVez(false);
         }
-        if (index === dataG.resposta){
+        if (indexResposta === dataG.resposta){
             aumentarPontuacao();
         }
+        //console.log("entrou");
         setProgresso(0);
-        setTimeAtual(timeAtual === 'red' ? 'blue' : 'red');
+        //console.log(timeAtual);
+        setTimeAtual(timeAtual == 'red' ? 'blue' : 'red');
+        console.log(timeAtual);
     }
 
     
@@ -70,7 +73,9 @@ export function Perguntas (){
                     return Math.min(prev + incremento, maxProgresso);
                     
                 }
-                passarQuestao();
+                passarQuestao(5);
+                console.log(timeAtual);
+                
                 return prev; // Caso contrário, mantém o valor atual
             });
             // requestAnimationFrame(animateProgress); // Continua a animação
@@ -81,12 +86,16 @@ export function Perguntas (){
         // const animationId = requestAnimationFrame(animateProgress);
 
         // Limpa a animação ao desmontar o componente
-    }, []); // O array vazio garante que isso rode apenas uma vez
+    }, [timeAtual]); // O array vazio garante que isso rode apenas uma vez
+
+    // useEffect(() => {
+    //     console.log(timeAtual);
+    // }, []);
 
 
     return(
             <div className="overflow-x-hidden">
-                <div className="w-full h-2/5 bg-[linear-gradient(90deg,#046FD2,#58ABF9)] border-fundo -z-10 absolute"></div>
+                <div className={`w-full h-2/5 ${ timeAtual === 'red' ? "bg-[linear-gradient(350deg,#dd2e44,#FF7699)]" : "bg-[linear-gradient(90deg,#046FD2,#58ABF9)]" } border-fundo -z-10 absolute`}></div>
         
                 <main className="mx-28">
 
@@ -107,7 +116,7 @@ export function Perguntas (){
                         <PerguntaButton opcao={dataG.opcoes[3]} passarQuestao={passarQuestao} indexCorreto={dataG.resposta} index={3}/>
                     </div>
 
-                    <div className={`h-32 w-32 ${timeAtual == 'red' ? "bg-red-400" : "bg-cyan-600"}`}><p>{timeAtual} : {timeAtual == 'red'? pontuacao.red : pontuacao.blue}</p></div>
+                    {/* <div className={`h-32 w-32 ${timeAtual == 'red' ? "bg-red-400" : "bg-cyan-600"}`}><p>{timeAtual} : {timeAtual == 'red'? pontuacao.red : pontuacao.blue}</p></div> */}
                 </main>
 
             </div>
