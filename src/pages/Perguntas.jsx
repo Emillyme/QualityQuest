@@ -9,6 +9,8 @@ import data from "../data/data.json";
 
 export function Perguntas (){
     
+    const [pontuacao, setPontuacao] = useState({red: 0, blue: 0});
+    const [passouVez, setPassouVez] = useState(false);
     const [timeAtual, setTimeAtual] = useState(Math.random() < 0.5 ? 'red' : 'blue');
     const [perguntas, setPerguntas] = useState(data.perguntas);
     const [index, setIndex] = useState(sortearQuestao);
@@ -21,27 +23,40 @@ export function Perguntas (){
         return Math.floor(Math.random() * perguntas.length);
     }
 
-    const passarQuestao = () => {
-        let novoIndex = sortearQuestao();
-
-        setIndex(novoIndex);
-
-        setDataG(perguntas[novoIndex])
-        setProgresso(0);
-
-        setPerguntas((prevPerguntas) => {
-            const novasPerguntas = [...prevPerguntas]
-            novasPerguntas.splice(index, 1);
-            return novasPerguntas;
-        })
-        console.log(perguntas.length)
+    function aumentarPontuacao(){
+        setPontuacao(prevPontuacao => {
+            return {
+                ...prevPontuacao,
+                [timeAtual]: prevPontuacao[timeAtual] + 1
+            }
+        });
     }
 
-    const corrijir = (indexOpcao) => {
-
-        if(indexOpcao == perguntas.resposta){
+    const passarQuestao = (index) => {
+        if (index !== dataG.resposta && !passouVez){
+            setPassouVez(true);
             
         }
+        else{
+            let novoIndex = sortearQuestao();
+
+            setIndex(novoIndex);
+
+            setDataG(perguntas[novoIndex])
+            
+
+            setPerguntas((prevPerguntas) => {
+                const novasPerguntas = [...prevPerguntas]
+                novasPerguntas.splice(index, 1);
+                return novasPerguntas;
+            });
+            setPassouVez(false);
+        }
+        if (index === dataG.resposta){
+            aumentarPontuacao();
+        }
+        setProgresso(0);
+        setTimeAtual(timeAtual === 'red' ? 'blue' : 'red');
     }
 
     
@@ -53,8 +68,9 @@ export function Perguntas (){
                 if (prev < maxProgresso) {
                     // Aumenta o progresso de forma segura
                     return Math.min(prev + incremento, maxProgresso);
+                    
                 }
-
+                passarQuestao();
                 return prev; // Caso contrário, mantém o valor atual
             });
             // requestAnimationFrame(animateProgress); // Continua a animação
@@ -85,11 +101,13 @@ export function Perguntas (){
                     </div>
 
                     <div className=" mx-40 flex flex-col gap-10 mt-44 justify-center ">
-                        <PerguntaButton opcao={dataG.opcoes[0]} funcao={passarQuestao} correct={""}/>
-                        <PerguntaButton opcao={dataG.opcoes[1]}/>
-                        <PerguntaButton opcao={dataG.opcoes[2]}/>
-                        <PerguntaButton opcao={dataG.opcoes[3]}/>
+                        <PerguntaButton opcao={dataG.opcoes[0]} passarQuestao={passarQuestao} indexCorreto={dataG.resposta} index={0}/>
+                        <PerguntaButton opcao={dataG.opcoes[1]} passarQuestao={passarQuestao} indexCorreto={dataG.resposta} index={1}/>
+                        <PerguntaButton opcao={dataG.opcoes[2]} passarQuestao={passarQuestao} indexCorreto={dataG.resposta} index={2}/>
+                        <PerguntaButton opcao={dataG.opcoes[3]} passarQuestao={passarQuestao} indexCorreto={dataG.resposta} index={3}/>
                     </div>
+
+                    <div className={`h-32 w-32 ${timeAtual == 'red' ? "bg-red-400" : "bg-cyan-600"}`}><p>{timeAtual} : {timeAtual == 'red'? pontuacao.red : pontuacao.blue}</p></div>
                 </main>
 
             </div>

@@ -1,26 +1,24 @@
 import { useState } from "react"
 
-export function PerguntaButton({opcao, funcao, correct}){
+export function PerguntaButton({opcao, passarQuestao, indexCorreto, index}){
+    
+    
 
+    const [mostrarCor, setMostrarCor] = useState(false);
 
+    const correta = index === indexCorreto;
 
-    // const corrijir = () => {
-    //     if(index === indexCorreto){
-    //         setCorrect(true);
-    //     }
-    //     else{
-    //         setCorrect(false);
-    //     }
-    // }
-
-    // const eventosBotao = () => {
-    //     corrijir
-    //     funcao
-
-    // }
+    const eventosBotao = () => {
+        setMostrarCor(true);
+        setTimeout(() => {
+            passarQuestao(index);
+            setMostrarCor(false);
+        }, 1000);
+        
+    }
 
     return(
-        <button className={`${correct === '' ? "bg-white": correct ? "bg-correct" : "bg-wrong"} text-opcao font-semibold text-2xl
-        sombra-perguntas py-4 `} onClick={funcao}>{opcao}</button>
+        <button className={`${!mostrarCor ? "bg-white": correta ? "bg-correct" : "bg-wrong"} text-opcao font-semibold text-2xl
+        sombra-perguntas py-4 `} onClick={eventosBotao}>{opcao}</button>
     )
 }
