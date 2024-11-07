@@ -33,25 +33,22 @@ const cardPairs = [
     { image: '/respostas/14.png', type: 'resposta' },
 ];
 
-// Embaralha as cartas
 const shuffledCards = [...cardPairs].sort(() => Math.random() - 0.5);
 
 export function MemoryGame() {
-    const navigate = useNavigate(); // Hook para navegação
+    const navigate = useNavigate();
     const [cards, setCards] = useState(shuffledCards);
     const [flippedIndices, setFlippedIndices] = useState([]);
     const [matchedCards, setMatchedCards] = useState([]);
     const [lockBoard, setLockBoard] = useState(false);
+    const [timeAtual, setTimeAtual] = useState('red');
+    const [pontuacao, setPontuacao] = useState({ red: 0, blue: 0 });
 
     useEffect(() => {
-        // Verifica se todas as cartas foram combinadas
-        if (matchedCards.length + flippedIndices.length === cards.length) {
-            setTimeout(() => {
-                // Quando o jogo terminar, redireciona para a página do jogo "PalavraOculta"
-                navigate('/palavraoculta'); 
-            }, 1000); // Aguarda 1 segundo antes de redirecionar
+        if (matchedCards.length === cards.length) {
+            setTimeout(() => navigate('/palavraoculta'), 1000);
         }
-    }, [matchedCards, flippedIndices, cards.length, navigate]);
+    }, [matchedCards, cards.length, navigate]);
 
     const handleCardClick = (index) => {
         if (lockBoard || flippedIndices.includes(index) || matchedCards.includes(index)) return;
@@ -62,14 +59,25 @@ export function MemoryGame() {
             setLockBoard(true);
             const firstIndex = flippedIndices[0];
 
-            // Verifica se as imagens combinam
             if (cards[firstIndex].image.split('/').pop() === cards[index].image.split('/').pop()) {
                 setMatchedCards((prev) => [...prev, firstIndex, index]);
-                resetBoard();
+                aumentarPontuacao();
             } else {
-                setTimeout(resetBoard, 1000);
+                setTimeout(() => {
+                    setTimeAtual((prevTime) => (prevTime === 'red' ? 'blue' : 'red'));
+                    resetBoard();
+                }, 1000);
             }
         }
+    };
+
+    const aumentarPontuacao = () => {
+        setPontuacao((prevPontuacao) => ({
+            ...prevPontuacao,
+            [timeAtual]: prevPontuacao[timeAtual] + 1,
+        }));
+        setLockBoard(false);
+        resetBoard();
     };
 
     const resetBoard = () => {
@@ -78,13 +86,19 @@ export function MemoryGame() {
     };
 
     return (
-        <div className="font-josefin flex flex-col items-center justify-center text-center p-[50px] bg-[#404c90]">
+        <div
+            className={`font-josefin flex flex-col items-center justify-center text-center p-[50px] ${
+                timeAtual === 'red' ? 'bg-[#dd2e44]' : 'bg-[#046FD2]'
+            }`}
+        >
             <h2 className="text-2xl font-bold mb-4 text-white">Combine as cartas de acordo com o texto</h2>
             <div className="grid grid-cols-7 gap-4 mb-4">
                 {cards.map((card, index) => (
                     <div
                         key={index}
-                        className={`w-[200px] h-[200px] bg-white rounded-lg flex items-center justify-center cursor-pointer transition-transform duration-300 transform ${flippedIndices.includes(index) || matchedCards.includes(index) ? 'rotate-y-180' : ''}`}
+                        className={`w-[200px] h-[200px] bg-white rounded-lg flex items-center justify-center cursor-pointer transition-transform duration-300 transform ${
+                            flippedIndices.includes(index) || matchedCards.includes(index) ? 'rotate-y-180' : ''
+                        }`}
                         onClick={() => handleCardClick(index)}
                     >
                         {flippedIndices.includes(index) || matchedCards.includes(index) ? (
@@ -94,6 +108,15 @@ export function MemoryGame() {
                         )}
                     </div>
                 ))}
+            </div>
+
+            <div className="flex justify-between w-full mt-10">
+                <div className="w-28 h-28 bg-[#dd2e44] rounded-lg flex justify-center items-center text-white font-semibold text-3xl">
+                    <p>{pontuacao.red}</p>
+                </div>
+                <div className="w-28 h-28 bg-[#046FD2] rounded-lg flex justify-center items-center text-white font-semibold text-3xl">
+                    <p>{pontuacao.blue}</p>
+                </div>
             </div>
         </div>
     );

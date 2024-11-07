@@ -1,9 +1,8 @@
 import { TitlePegunta } from "../components/TitlePergunta";
 import { PerguntaButton } from "../components/PerguntaButton";
 import { useEffect, useState } from "react";
-import data from "../data/data.json";
+import data from "../data/datateste.json";
 import { useNavigate } from 'react-router-dom';
-
 
 export function Perguntas (){
     const navigate = useNavigate();
@@ -33,18 +32,13 @@ export function Perguntas (){
     const passarQuestao = (indexResposta) => {
         if (indexResposta !== dataG.resposta && !passouVez){
             setPassouVez(true);
-            
-        }
-        else{
+        } else {
             let novoIndex = sortearQuestao();
-
             setIndex(novoIndex);
-
-            setDataG(perguntas[novoIndex])
-            
+            setDataG(perguntas[novoIndex]);
 
             setPerguntas((prevPerguntas) => {
-                const novasPerguntas = [...prevPerguntas]
+                const novasPerguntas = [...prevPerguntas];
                 novasPerguntas.splice(index, 1);
                 return novasPerguntas;
             });
@@ -53,62 +47,43 @@ export function Perguntas (){
         if (indexResposta === dataG.resposta){
             aumentarPontuacao();
         }
-        //console.log("entrou");
         setProgresso(0);
-        //console.log(timeAtual);
-        setTimeAtual(timeAtual == 'red' ? 'blue' : 'red');
-        console.log(timeAtual);
+        setTimeAtual(timeAtual === 'red' ? 'blue' : 'red');
     }
 
-    
-
-    useEffect(()=> {
+    useEffect(() => {
         const intervalo = setInterval(() => {
             setProgresso((prev) => {
-                // Se o progresso é menor que o máximo
                 if (prev < maxProgresso) {
-                    // Aumenta o progresso de forma segura
                     return Math.min(prev + incremento, maxProgresso);
-                    
                 }
                 passarQuestao(5);
-                console.log(timeAtual);
-                
-                return prev; // Caso contrário, mantém o valor atual
+                return prev;
             });
-            // requestAnimationFrame(animateProgress); // Continua a animação
         }, 1000);
 
-        if (perguntas.length === 0 ){
+        if (perguntas.length === 0) {
             navigate('/memorygame');
         }
         
         return () => clearInterval(intervalo);
-        // Inicia a animação
-        // const animationId = requestAnimationFrame(animateProgress);
+    }, [timeAtual]);
 
-        // Limpa a animação ao desmontar o componente
-    }, [timeAtual]); // O array vazio garante que isso rode apenas uma vez
-        
-
-
-    return(
+    return (
         <div className="overflow-x-hidden">
-            <div className={`w-full h-2/5 ${ timeAtual === 'red' ? "bg-[linear-gradient(350deg,#dd2e44,#FF7699)]" : "bg-[linear-gradient(90deg,#046FD2,#58ABF9)]" } border-fundo -z-10 absolute`}></div>
+            <div className={`w-full h-2/5 ${timeAtual === 'red' ? "bg-[linear-gradient(350deg,#dd2e44,#FF7699)]" : "bg-[linear-gradient(90deg,#046FD2,#58ABF9)]"} border-fundo -z-10 absolute`}></div>
 
             <main className="mx-28">
-
                 {/* barra do cronometro  */}
                 <div className="bg-cronometro-fundo w-full h-7 mt-8 rounded-full overflow-hidden">
-                    <div className="w-full mx-0 h-full bg-correct  transition-all duration-500" style={{width: `${progresso}%`}}></div>
+                    <div className="w-full mx-0 h-full bg-correct transition-all duration-500" style={{width: `${progresso}%`}}></div>
                 </div>
 
-                <div className="">
-
+                <div>
                     <TitlePegunta texto={dataG.questao}/> 
                 </div>
 
-                <div className=" mx-40 flex flex-col gap-10 mt-44 justify-center ">
+                <div className="mx-40 flex flex-col gap-10 mt-44 justify-center">
                     <PerguntaButton opcao={dataG.opcoes[0]} passarQuestao={passarQuestao} indexCorreto={dataG.resposta} index={0}/>
                     <PerguntaButton opcao={dataG.opcoes[1]} passarQuestao={passarQuestao} indexCorreto={dataG.resposta} index={1}/>
                     <PerguntaButton opcao={dataG.opcoes[2]} passarQuestao={passarQuestao} indexCorreto={dataG.resposta} index={2}/>
@@ -116,18 +91,16 @@ export function Perguntas (){
                 </div>
 
                 <div className="flex justify-between mt-10">
-                    <div className=" w-28 h-28 bg-[#dd2e44] rounded-lg flex justify-center items-center text-white font-semibold text-3xl">
-                        <p>1</p>
+                    {/* Exibir pontuação dos times */}
+                    <div className="w-28 h-28 bg-[#dd2e44] rounded-lg flex justify-center items-center text-white font-semibold text-3xl">
+                        <p>{pontuacao.red}</p>
                     </div>
 
-                    <div  className=" w-28 h-28 bg-[#046FD2] rounded-lg flex justify-center items-center text-white font-semibold text-3xl">
-                        <p>1</p>
+                    <div className="w-28 h-28 bg-[#046FD2] rounded-lg flex justify-center items-center text-white font-semibold text-3xl">
+                        <p>{pontuacao.blue}</p>
                     </div>
                 </div>
-
-                {/* <div className={`h-32 w-32 ${timeAtual == 'red' ? "bg-red-400" : "bg-cyan-600"}`}><p>{timeAtual} : {timeAtual == 'red'? pontuacao.red : pontuacao.blue}</p></div> */}
             </main>
-        
         </div>
-    )
+    );
 }

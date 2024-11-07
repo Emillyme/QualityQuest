@@ -1,14 +1,81 @@
 {
-    "perguntas": [
-      {
-        "questao": "Qual é a cor do céu?",
-        "opcoes": ["Azul", "Verde", "Amarelo", "Vermelho"],
-        "resposta": 0
-      },
-      {
-        "questao": "Qual é a capital do Brasil?",
-        "opcoes": ["Brasília", "São Paulo", "Rio de Janeiro", "Curitiba"],
-        "resposta": 0
-      }
-    ]
+  "perguntas": [
+    {
+      "questao": "Qual é o principal objetivo de ter zero defeitos nos produtos?",
+      "imagem": "https://www.google.com/url?sa=i&url=https%3A%2F%2Femtodolugar.facha.edu.br%2F2023%2F04%2F20%2Fdia-do-pinguim-filmes-com-as-aves-marinhas-para-assistir%2F&psig=AOvVaw1n4wpWKJM7F9hMUN_USWr4&ust=1729904971594000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMjdl6usqIkDFQAAAAAdAAAAABAQ",
+      "opcoes": [
+        "A) Reduzir custos",
+        "B) Aumentar a produção",
+        "C) Satisfazer o cliente corretamente",
+        "D) Minimizar os materiais utilizados"
+      ],
+      "resposta": 2
+    },
+    {
+      "questao": "O que significa o princípio de 'Satisfação do Cliente'?",
+      "imagem": "https://www.google.com/url?sa=i&url=https%3A%2F%2Femtodolugar.facha.edu.br%2F2023%2F04%2F20%2Fdia-do-pinguim-filmes-com-as-aves-marinhas-para-assistir%2F&psig=AOvVaw1n4wpWKJM7F9hMUN_USWr4&ust=1729904971594000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMjdl6usqIkDFQAAAAAdAAAAABAQ",
+      "opcoes": [
+        "A) Fazer os produtos mais rápidos",
+        "B) Atender e exceder as expectativas do cliente",
+        "C) Produzir em maior quantidade",
+        "D) Reduzir custos de produção"
+      ],
+      "resposta": 1
+    },
+    {
+      "questao": "Como as reclamações dos clientes são tratadas na empresa?",
+      "imagem": "https://www.google.com/url?sa=i&url=https%3A%2F%2Femtodolugar.facha.edu.br%2F2023%2F04%2F20%2Fdia-do-pinguim-filmes-com-as-aves-marinhas-para-assistir%2F&psig=AOvVaw1n4wpWKJM7F9hMUN_USWr4&ust=1729904971594000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMjdl6usqIkDFQAAAAAdAAAAABAQ",
+      "opcoes": [
+        "A) São ignoradas",
+        "B) São passadas para outra equipe",
+        "C) São visualizadas e resolvidas diretamente na área de trabalho",
+        "D) São resolvidas apenas uma vez por mês"
+      ],
+      "resposta": 2
+    },
+    {
+      "questao": "O que é o 'Stop Sign' e por que ele é usado?",
+      "imagem": "",
+      "opcoes": [
+        "A) Para indicar um problema de qualidade e interromper a produção",
+        "B) Para chamar um supervisor",
+        "C) Para reduzir o tempo de produção",
+        "D) Para aumentar a velocidade de fabricação"
+      ],
+      "resposta": 0
+    },
+    {
+      "questao": "Quem decide encerrar um 'Stop Sign'?",
+      "imagem": "",
+      "opcoes": [
+        "A) Operador da linha",
+        "B) Gestores de manufatura e logística",
+        "C) Clientes",
+        "D) Supervisores de vendas"
+      ],
+      "resposta": 1
+    },
+    {
+      "questao": "O que um colaborador deve fazer ao notar um problema de qualidade?",
+      "imagem": "",
+      "opcoes": [
+        "A) Ignorar o problema",
+        "B) Notificar e parar o processo, se necessário",
+        "C) Resolver sozinho e continuar",
+        "D) Aguardar o gerente resolver"
+      ],
+      "resposta": 1
+    },
+    {
+      "questao": "O que significa 'Reação Rápida' em casos de problemas?",
+      "imagem": "",
+      "opcoes": [
+        "A) Reagir ao final do turno",
+        "B) Aguardar por uma solução",
+        "C) Resolver imediatamente com ações rápidas",
+        "D) Ignorar problemas menores"
+      ],
+      "resposta": 2
+    }
+  ]
 }
