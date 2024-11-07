@@ -6,7 +6,7 @@ import { Perguntas } from './pages/Perguntas.jsx'
 import './index.css'
 import Vencedor from "./pages/Vencedor.jsx"
 import { MemoryGame } from './pages/MemoryGame.jsx'
-import { PalavraOculta } from './pages/PalavraOculta.jsx'
+import PalavraOculta from './pages/PalavraOculta'; 
 
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
