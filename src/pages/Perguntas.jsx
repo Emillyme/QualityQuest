@@ -2,13 +2,11 @@ import { TitlePegunta } from "../components/TitlePergunta";
 import { PerguntaButton } from "../components/PerguntaButton";
 import { useEffect, useState } from "react";
 import data from "../data/data.json";
-
-
-
+import { useNavigate } from 'react-router-dom';
 
 
 export function Perguntas (){
-    
+    const navigate = useNavigate();
     const [pontuacao, setPontuacao] = useState({red: 0, blue: 0});
     const [passouVez, setPassouVez] = useState(false);
     const [timeAtual, setTimeAtual] = useState(Math.random() < 0.5 ? 'red' : 'blue');
@@ -80,6 +78,10 @@ export function Perguntas (){
             });
             // requestAnimationFrame(animateProgress); // Continua a animação
         }, 1000);
+
+        if (perguntas.length === 0 ){
+            navigate('/memorygame');
+        }
         
         return () => clearInterval(intervalo);
         // Inicia a animação
@@ -87,38 +89,45 @@ export function Perguntas (){
 
         // Limpa a animação ao desmontar o componente
     }, [timeAtual]); // O array vazio garante que isso rode apenas uma vez
-
-    // useEffect(() => {
-    //     console.log(timeAtual);
-    // }, []);
+        
 
 
     return(
-            <div className="overflow-x-hidden">
-                <div className={`w-full h-2/5 ${ timeAtual === 'red' ? "bg-[linear-gradient(350deg,#dd2e44,#FF7699)]" : "bg-[linear-gradient(90deg,#046FD2,#58ABF9)]" } border-fundo -z-10 absolute`}></div>
+        <div className="overflow-x-hidden">
+            <div className={`w-full h-2/5 ${ timeAtual === 'red' ? "bg-[linear-gradient(350deg,#dd2e44,#FF7699)]" : "bg-[linear-gradient(90deg,#046FD2,#58ABF9)]" } border-fundo -z-10 absolute`}></div>
+
+            <main className="mx-28">
+
+                {/* barra do cronometro  */}
+                <div className="bg-cronometro-fundo w-full h-7 mt-8 rounded-full overflow-hidden">
+                    <div className="w-full mx-0 h-full bg-correct  transition-all duration-500" style={{width: `${progresso}%`}}></div>
+                </div>
+
+                <div className="">
+
+                    <TitlePegunta texto={dataG.questao}/> 
+                </div>
+
+                <div className=" mx-40 flex flex-col gap-10 mt-44 justify-center ">
+                    <PerguntaButton opcao={dataG.opcoes[0]} passarQuestao={passarQuestao} indexCorreto={dataG.resposta} index={0}/>
+                    <PerguntaButton opcao={dataG.opcoes[1]} passarQuestao={passarQuestao} indexCorreto={dataG.resposta} index={1}/>
+                    <PerguntaButton opcao={dataG.opcoes[2]} passarQuestao={passarQuestao} indexCorreto={dataG.resposta} index={2}/>
+                    <PerguntaButton opcao={dataG.opcoes[3]} passarQuestao={passarQuestao} indexCorreto={dataG.resposta} index={3}/>
+                </div>
+
+                <div className="flex justify-between mt-10">
+                    <div className=" w-28 h-28 bg-[#dd2e44] rounded-lg flex justify-center items-center text-white font-semibold text-3xl">
+                        <p>1</p>
+                    </div>
+
+                    <div  className=" w-28 h-28 bg-[#046FD2] rounded-lg flex justify-center items-center text-white font-semibold text-3xl">
+                        <p>1</p>
+                    </div>
+                </div>
+
+                {/* <div className={`h-32 w-32 ${timeAtual == 'red' ? "bg-red-400" : "bg-cyan-600"}`}><p>{timeAtual} : {timeAtual == 'red'? pontuacao.red : pontuacao.blue}</p></div> */}
+            </main>
         
-                <main className="mx-28">
-
-                    {/* barra do cronometro  */}
-                    <div className="bg-cronometro-fundo w-full h-7 mt-8 rounded-full overflow-hidden">
-                        <div className="w-full mx-0 h-full bg-correct  transition-all duration-500" style={{width: `${progresso}%`}}></div>
-                    </div>
-
-                    <div className="">
-
-                        <TitlePegunta texto={dataG.questao}/> 
-                    </div>
-
-                    <div className=" mx-40 flex flex-col gap-10 mt-44 justify-center ">
-                        <PerguntaButton opcao={dataG.opcoes[0]} passarQuestao={passarQuestao} indexCorreto={dataG.resposta} index={0}/>
-                        <PerguntaButton opcao={dataG.opcoes[1]} passarQuestao={passarQuestao} indexCorreto={dataG.resposta} index={1}/>
-                        <PerguntaButton opcao={dataG.opcoes[2]} passarQuestao={passarQuestao} indexCorreto={dataG.resposta} index={2}/>
-                        <PerguntaButton opcao={dataG.opcoes[3]} passarQuestao={passarQuestao} indexCorreto={dataG.resposta} index={3}/>
-                    </div>
-
-                    {/* <div className={`h-32 w-32 ${timeAtual == 'red' ? "bg-red-400" : "bg-cyan-600"}`}><p>{timeAtual} : {timeAtual == 'red'? pontuacao.red : pontuacao.blue}</p></div> */}
-                </main>
-
-            </div>
+        </div>
     )
 }

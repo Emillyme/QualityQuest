@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom"
 import triangulo from "../imgs/triamgulo.svg"
 import { TitlePegunta } from "../components/TitlePergunta"
 import { useState } from "react"
- 
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 export function Times() {
    
     const navigate = useNavigate()

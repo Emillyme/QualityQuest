@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // Array de pares de cartas
 const cardPairs = [
@@ -35,17 +36,22 @@ const cardPairs = [
 // Embaralha as cartas
 const shuffledCards = [...cardPairs].sort(() => Math.random() - 0.5);
 
-export function MemoryGame({ onFinish }) {
+export function MemoryGame() {
+    const navigate = useNavigate(); // Hook para navegação
     const [cards, setCards] = useState(shuffledCards);
     const [flippedIndices, setFlippedIndices] = useState([]);
     const [matchedCards, setMatchedCards] = useState([]);
     const [lockBoard, setLockBoard] = useState(false);
 
     useEffect(() => {
+        // Verifica se todas as cartas foram combinadas
         if (matchedCards.length + flippedIndices.length === cards.length) {
-            setTimeout(onFinish, 1000);
+            setTimeout(() => {
+                // Quando o jogo terminar, redireciona para a página do jogo "PalavraOculta"
+                navigate('/palavraoculta'); 
+            }, 1000); // Aguarda 1 segundo antes de redirecionar
         }
-    }, [matchedCards, flippedIndices, cards.length, onFinish]);
+    }, [matchedCards, flippedIndices, cards.length, navigate]);
 
     const handleCardClick = (index) => {
         if (lockBoard || flippedIndices.includes(index) || matchedCards.includes(index)) return;

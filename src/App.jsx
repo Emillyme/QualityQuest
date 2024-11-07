@@ -1,15 +1,14 @@
 import { useState } from 'react'
 import './App.css'
 import { Times } from './pages/Times'
-import { MemoryGame } from './components/MemoryGame'
+import { MemoryGame } from './pages/MemoryGame'
 
 function App() {
 
   return (
-    <>
-      {/* <Times/> */}
-      <MemoryGame/>
-    </>
+    <div className="App">
+      <Times/>
+    </div>
   )
 }
 

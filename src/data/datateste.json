@@ -1,0 +1,14 @@
+{
+    "perguntas": [
+      {
+        "questao": "Qual é a cor do céu?",
+        "opcoes": ["Azul", "Verde", "Amarelo", "Vermelho"],
+        "resposta": 0
+      },
+      {
+        "questao": "Qual é a capital do Brasil?",
+        "opcoes": ["Brasília", "São Paulo", "Rio de Janeiro", "Curitiba"],
+        "resposta": 0
+      }
+    ]
+}

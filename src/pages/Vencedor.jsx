@@ -1,6 +1,7 @@
 // gifs 
 import gifTrofeu from "../imgs/trofeu.gif"
 import gifConfete from "../imgs/confete.gif"
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
 import "../index.css"

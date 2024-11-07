@@ -5,6 +5,8 @@ import App from './App.jsx'
 import { Perguntas } from './pages/Perguntas.jsx'
 import './index.css'
 import Vencedor from "./pages/Vencedor.jsx"
+import { MemoryGame } from './pages/MemoryGame.jsx'
+import { PalavraOculta } from './pages/PalavraOculta.jsx'
 
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
@@ -21,6 +23,14 @@ const router = createBrowserRouter([
   {
     path: "/vencedor",
     element: <Vencedor/>
+  },
+  {
+    path: "/memorygame",
+    element: <MemoryGame/>
+  },
+  {
+    path: "/palavraoculta",
+    element: <PalavraOculta/>
   }
 ])
 
