@@ -24,7 +24,7 @@ export function Perguntas (){
         setPontuacao(prevPontuacao => {
             return {
                 ...prevPontuacao,
-                [timeAtual]: prevPontuacao[timeAtual] + 1
+                [timeAtual]: prevPontuacao[timeAtual] + 1 
             }
         });
     }
@@ -63,6 +63,7 @@ export function Perguntas (){
         }, 1000);
 
         if (perguntas.length === 0) {
+            localStorage.setItem('pontuacao', JSON.stringify(pontuacao));
             navigate('/memorygame');
         }
         

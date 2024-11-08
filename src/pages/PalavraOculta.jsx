@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../index.css";
+import { useNavigate } from "react-router-dom";
  
 // Lista de temas com 14 arrays diferentes e suas dicas
 const temas = {
@@ -38,6 +39,7 @@ const dicas = {
 };
  
 const PalavraOculta = () => {
+    const navigate = useNavigate();
     const [input, setInput] = useState('');
     const [termoSelecionado, setTermoSelecionado] = useState('Q1');
     const [palavrasTentadas, setPalavrasTentadas] = useState(new Set());
@@ -45,10 +47,16 @@ const PalavraOculta = () => {
     const [mensagem, setMensagem] = useState('');
     const [timeAtual, setTimeAtual] = useState('azul');
     const [temasRestantes, setTemasRestantes] = useState(Object.keys(temas)); // lista de temas que restam
- 
-    // pontos dos times
-    const [pontosAzul, setPontosAzul] = useState(0);
-    const [pontosVermelho, setPontosVermelho] = useState(0);
+    const [pontuacao, setPontuacao] = useState(localStorage.getItem('pontuacao') ? JSON.parse(localStorage.getItem('pontuacao')) : { red: 0, blue: 0 });
+
+    function aumentarPontuacao(){
+        setPontuacao(prevPontuacao => {
+            return {
+                ...prevPontuacao,
+                [timeAtual]: prevPontuacao[timeAtual] + 1
+            }
+        });
+    }
  
     // dica visível
     const [dicaVisivel, setDicaVisivel] = useState('');
@@ -64,6 +72,7 @@ const PalavraOculta = () => {
             }, 1000);
         } else if (timeLeft === 0) {
             clearInterval(interval);
+            navigate('/vencedor');
         }
  
         return () => clearInterval(interval);
@@ -86,11 +95,9 @@ const PalavraOculta = () => {
             setPalavrasTentadas(new Set(palavrasTentadas).add(palavra));
             setInput('');
             setMensagem(`O time ${timeAtual} acertou!`);
-            if (timeAtual === 'azul') {
-                setPontosAzul(pontosAzul + 1); // incrementa pontos do time azul
-            } else {
-                setPontosVermelho(pontosVermelho + 1); // incrementa pontos do time vermelho
-            }
+            
+            aumentarPontuacao();
+
             alternarTime();
         } else {
             setMensagem(`Palavra já tentada ou não relacionada. Turno do time ${timeAtual === 'azul' ? 'vermelho' : 'azul'}`);
@@ -115,7 +122,6 @@ const PalavraOculta = () => {
             setTermoSelecionado(novoTema); // definir o novo tema
             setTemasRestantes(temasRestantes.filter(tema => tema !== novoTema)); // remover tema da lista
         } else {
-            // Todos os temas já foram usados, resetar lista de temas restantes
             setTemasRestantes(Object.keys(temas));
         }
     };
@@ -130,10 +136,10 @@ const PalavraOculta = () => {
  
             {/* Pontos dos times */}
             <div className="absolute top-5 left-5 text-white font-semibold text-3xl">
-                <p>Equipe Azul: {pontosAzul}</p>
+                <p>Equipe Azul: {pontuacao['blue']}</p>
             </div>
             <div className="absolute top-5 right-5 text-white font-semibold text-3xl">
-                <p>Equipe Vermelha: {pontosVermelho}</p>
+                <p>Equipe Vermelha: {pontuacao['red']}</p>
             </div>
  
             <h1 className='text-white font-semibold text-5xl text-center py-24 mr-14'>Tema: {termoSelecionado}</h1>

@@ -11,6 +11,8 @@ import PalavraOculta from './pages/PalavraOculta';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
+localStorage.setItem('pontuacao', JSON.stringify({ red: 0, blue: 0 }))
+
 const router = createBrowserRouter([
   {
     path: "/",

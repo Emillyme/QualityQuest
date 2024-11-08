@@ -42,10 +42,11 @@ export function MemoryGame() {
     const [matchedCards, setMatchedCards] = useState([]);
     const [lockBoard, setLockBoard] = useState(false);
     const [timeAtual, setTimeAtual] = useState('red');
-    const [pontuacao, setPontuacao] = useState({ red: 0, blue: 0 });
+    const [pontuacao, setPontuacao] = useState(localStorage.getItem('pontuacao') ? JSON.parse(localStorage.getItem('pontuacao')) : { red: 0, blue: 0 });
 
     useEffect(() => {
         if (matchedCards.length === cards.length) {
+            localStorage.setItem('pontuacao', JSON.stringify(pontuacao));
             setTimeout(() => navigate('/palavraoculta'), 1000);
         }
     }, [matchedCards, cards.length, navigate]);
