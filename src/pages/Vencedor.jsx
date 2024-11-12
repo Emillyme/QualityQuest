@@ -3,6 +3,7 @@ import gifTrofeu from "../imgs/trofeu.gif"
 import gifConfete from "../imgs/confetes.gif"
 import gifEstrelas from "../imgs/estrelas.gif"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useNavigate } from "react-router-dom"
 
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -14,9 +15,34 @@ import {useState, useEffect} from 'react'
 
 export default function Vencedor(){
 
-    const [vencedor, setVencedor] = useState('vermelha')
+  const navigate = useNavigate()
+  const [pontuacao, setPontuacao] = useState(localStorage.getItem('pontuacao') ? JSON.parse(localStorage.getItem('pontuacao')) : { red: 0, blue: 0 });
+
+  function definirVencedor(){
+    if (pontuacao['red'] > pontuacao['blue']){
+      return 'Equipe Vermelha'
+    }
+    else if (pontuacao['red'] < pontuacao['blue']){
+      return 'Equipe Azul'
+    }
+    else{
+      return 'Empate'
+    }
+  
+  }
+
+    const [vencedor, setVencedor] = useState(definirVencedor())
     const [visible, setVisible] = useState(false);
     const [visibleBotao, setVisibleBotao] = useState(false)
+
+    const retornarInicio = () => {
+
+      setPontuacao({ red: 0, blue: 0 })
+      localStorage.setItem('pontuacao', JSON.stringify({ red: 0, blue: 0 }))
+      navigate('/')
+
+    }
+
 
     useEffect(() => {
         // Define um temporizador que altera o estado para true após 3 segundos
@@ -50,11 +76,10 @@ export default function Vencedor(){
 
                 <h2 className="font-medium text-4xl text-[#3B3636] primaru">Vencedor</h2>
 
-                {visible && <h1 className="font-bold text-[#FF3F5F] text-6xl animate-bounce">Equipe vermelha</h1>}
+                {visible && <h1 className={`${vencedor == 'Equipe Vermelha'? "text-[#FF3F5F]" : vencedor == "Equipe Azul"? "text-[#469ef0]" : "text-[#a375c6]"} font-bold  text-6xl animate-bounce`}>{vencedor}</h1>}
 
-                {visibleBotao &&  <button className="bg-[linear-gradient(90deg,#EEA0C7,#8DB9F8)] rounded-full py-3 font-semibold w-3/6 ml-7 text-white text-xl mt-12 ">Inicio</button>}
+                {visibleBotao &&  <button className="bg-[linear-gradient(90deg,#EEA0C7,#8DB9F8)] rounded-full py-3 font-semibold w-3/6 ml-7 text-white text-xl mt-12 " onClick={retornarInicio}>Inicio</button>}
 
-               
             </div>
 
 

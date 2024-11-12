@@ -62,7 +62,7 @@ const PalavraOculta = () => {
     const [dicaVisivel, setDicaVisivel] = useState('');
  
     // cronometro
-    const [timeLeft, setTimeLeft] = useState(300);
+    const [timeLeft, setTimeLeft] = useState(10);
  
     useEffect(() => {
         let interval = null;
