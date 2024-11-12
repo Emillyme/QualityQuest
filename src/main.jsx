@@ -7,6 +7,8 @@ import './index.css'
 import Vencedor from "./pages/Vencedor.jsx"
 import { MemoryGame } from './pages/MemoryGame.jsx'
 import PalavraOculta from './pages/PalavraOculta'; 
+import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'

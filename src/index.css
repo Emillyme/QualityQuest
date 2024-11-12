@@ -38,5 +38,21 @@ body {
 }
 
 .tamanho-git-trofeu {
-    transform: scale(1.5)
+    transform: scale(1.2)
 }
+
+@keyframes jump {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2); /* Sobe um pouco */
+    }
+    100% {
+      transform: scale(1); /* Volta à posição original */
+    }
+  }
+  
+  .jump {
+    animation: jump 0.5s ease-out; /* Define a duração e o tipo de animação */
+  }
